@@ -1,0 +1,26 @@
+---
+title: "DevelopingDataProducts-Week2Assignment"
+author: "Eric Roy"
+date: "07/10/2020"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE, message=FALSE)
+```
+
+## Leaflet Map
+### Quakes Dataset, locations of earthquakes off Fiji
+```{r map_of_quakes, echo=FALSE}
+
+library(leaflet)
+library(heatmaply)
+subset <- quakes[1:100,]
+subset$col <- ifelse(subset$mag>5.4, "red", "blue")
+subset %>% 
+  leaflet() %>% 
+  addTiles() %>% 
+  addCircles(weight=1, radius=normalize(subset$mag) *50000, label = subset$mag, color = subset$col) %>%
+  addLegend(labels = c("Magnitude <= 5.4", "Magnitude > 5.4"), colors = c("Blue", "Red"))
+
+```
