@@ -11,6 +11,8 @@ knitr::opts_chunk$set(echo = FALSE, message=FALSE)
 
 ## Leaflet Map
 ### Quakes Dataset, locations of earthquakes off Fiji
+
+This map displays 100 earthquakes that occurred around Fiji, each circle sized according to its magnitude. If the magnitude was 5.5 or over, the circle's colour is Red, else it remains blue.
 ```{r map_of_quakes, echo=FALSE}
 
 library(leaflet)
